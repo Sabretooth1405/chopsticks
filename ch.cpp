@@ -120,7 +120,7 @@ void score_calc(string s, int id)
                 cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " more illegal moves";
                 return;
             }
-            int w = p1_l.f + p2_l.f;
+            int w = p1_l.f + p1_r.f;
             p1_l.f = k;
             p1_r.f = (w - k) % 5;
         }
