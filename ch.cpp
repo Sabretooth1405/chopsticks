@@ -31,7 +31,7 @@ void score_calc(string s, int id)
             if (p1_l.f == 0)
             {
                 im1++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " more illegal moves";
             }
         }
         else if (s == "ll")
@@ -40,7 +40,7 @@ void score_calc(string s, int id)
             if (p1_l.f == 0)
             {
                 im1++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " more illegal moves";
             }
         }
         else if (s == "rl")
@@ -49,7 +49,7 @@ void score_calc(string s, int id)
             if (p1_r.f == 0)
             {
                 im1++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " more illegal moves";
             }
         }
         else if (s == "rr")
@@ -58,16 +58,16 @@ void score_calc(string s, int id)
             if (p1_r.f == 0)
             {
                 im1++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " more illegal moves";
             }
         }
         else if (s[0] = 'r' && s[1] == 'd')
         {
             int k = s[2] - 48;
-            if (k > (p1_l.f + p1_r.f) || (k == p1_l.f || k == p1_r.f) || k < 0)
+            if (k > (p1_l.f + p1_r.f) || (k == p1_l.f || k == p1_r.f) || k < 0 || k > 4)
             {
                 im1++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im1 << " more illegal moves";
                 return;
             }
             int w = p1_l.f + p2_l.f;
@@ -83,7 +83,7 @@ void score_calc(string s, int id)
             if (p2_l.f == 0)
             {
                 im2++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " more illegal moves";
             }
         }
         else if (s == "ll")
@@ -92,7 +92,7 @@ void score_calc(string s, int id)
             if (p2_l.f == 0)
             {
                 im1++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " more illegal moves";
             }
         }
         else if (s == "rl")
@@ -101,7 +101,7 @@ void score_calc(string s, int id)
             if (p2_r.f == 0)
             {
                 im2++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " more illegal moves";
             }
         }
         else if (s == "rr")
@@ -110,16 +110,16 @@ void score_calc(string s, int id)
             if (p2_r.f == 0)
             {
                 im2++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " more illegal moves";
             }
         }
         else if (s[0] = 'r' && s[1] == 'd')
         {
             int k = s[2] - 48;
-            if (k > (p2_l.f + p2_r.f) || (k == p2_l.f || k == p2_r.f) || k < 0)
+            if (k > (p2_l.f + p2_r.f) || (k == p2_l.f || k == p2_r.f) || k < 0 || k > 4)
             {
                 im2++;
-                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " illegal moves";
+                cout << "ILLEGAL MOVE: You WILL BE DISQUALIFIED IN " << 3 - im2 << " more illegal moves";
                 return;
             }
             int w = p2_l.f + p2_r.f;
@@ -143,17 +143,16 @@ int main()
         score_calc(s1, 1);
         if (im1 >= 3)
         {
-            cout << "P2 WINS!!!";
             display_hand(1);
             display_hand(2);
+            cout << "\nP2 WINS!!!";
             return 0;
         }
         if (im2 >= 3 || (p2_l.f == 0 && p2_r.f == 0))
         {
-            cout << "P1 WINS!!!";
             display_hand(1);
             display_hand(2);
-
+            cout << "\nP1 WINS!!!";
             return 0;
         }
         display_hand(1);
@@ -164,17 +163,16 @@ int main()
         score_calc(s2, 2);
         if (im2 >= 3)
         {
-            cout << "P1 WINS!!!";
             display_hand(1);
             display_hand(2);
-
+            cout << "\nP1 WINS!!!";
             return 0;
         }
         if (im1 >= 3 || (p1_l.f == 0 && p1_r.f == 0))
         {
-            cout << "P2 WINS!!!";
             display_hand(1);
             display_hand(2);
+            cout << "\nP2 WINS!!!";
             return 0;
         }
     }
