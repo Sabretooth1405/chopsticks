@@ -1,6 +1,6 @@
 # chopsticks
 A game of chopsticks in c++
--This is a redention of the game of chopsticks with a minimal UI
+- This is a redention of the game of chopsticks with a minimal UI
 # Manual
 - The game is governed by the traditonal rules of chopsticks
 - You can move in 3 ways
