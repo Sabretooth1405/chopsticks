@@ -12,6 +12,56 @@ hand p1_l;
 hand p2_l;
 hand p1_r;
 hand p2_r;
+void display_hand(int id);
+void score_calc(string s, int id);
+int main()
+{
+    p1_l.id = p1_r.id = 1;
+    p2_l.id = p2_r.id = 2;
+    while (((p1_l.f != 0 || p1_r.f != 0) && (p2_l.f != 0 || p2_r.f != 0)))
+    {
+        display_hand(1);
+        display_hand(2);
+        cout << "Move P1:";
+        string s1;
+        cin >> s1;
+        score_calc(s1, 1);
+        if (im1 >= 3)
+        {
+            display_hand(1);
+            display_hand(2);
+            cout << "\nP2 WINS!!!";
+            return 0;
+        }
+        if (im2 >= 3 || (p2_l.f == 0 && p2_r.f == 0))
+        {
+            display_hand(1);
+            display_hand(2);
+            cout << "\nP1 WINS!!!";
+            return 0;
+        }
+        display_hand(1);
+        display_hand(2);
+        cout << "Move P2:";
+        string s2;
+        cin >> s2;
+        score_calc(s2, 2);
+        if (im2 >= 3)
+        {
+            display_hand(1);
+            display_hand(2);
+            cout << "\nP1 WINS!!!";
+            return 0;
+        }
+        if (im1 >= 3 || (p1_l.f == 0 && p1_r.f == 0))
+        {
+            display_hand(1);
+            display_hand(2);
+            cout << "\nP2 WINS!!!";
+            return 0;
+        }
+    }
+}
 void display_hand(int id)
 {
     printf("\nplayer%i status:\n", id);
@@ -125,55 +175,6 @@ void score_calc(string s, int id)
             int w = p2_l.f + p2_r.f;
             p2_l.f = k;
             p2_r.f = (w - k) % 5;
-        }
-    }
-}
-
-int main()
-{
-    p1_l.id = p1_r.id = 1;
-    p2_l.id = p2_r.id = 2;
-    while (((p1_l.f != 0 || p1_r.f != 0) && (p2_l.f != 0 || p2_r.f != 0)))
-    {
-        display_hand(1);
-        display_hand(2);
-        cout << "Move P1:";
-        string s1;
-        cin >> s1;
-        score_calc(s1, 1);
-        if (im1 >= 3)
-        {
-            display_hand(1);
-            display_hand(2);
-            cout << "\nP2 WINS!!!";
-            return 0;
-        }
-        if (im2 >= 3 || (p2_l.f == 0 && p2_r.f == 0))
-        {
-            display_hand(1);
-            display_hand(2);
-            cout << "\nP1 WINS!!!";
-            return 0;
-        }
-        display_hand(1);
-        display_hand(2);
-        cout << "Move P2:";
-        string s2;
-        cin >> s2;
-        score_calc(s2, 2);
-        if (im2 >= 3)
-        {
-            display_hand(1);
-            display_hand(2);
-            cout << "\nP1 WINS!!!";
-            return 0;
-        }
-        if (im1 >= 3 || (p1_l.f == 0 && p1_r.f == 0))
-        {
-            display_hand(1);
-            display_hand(2);
-            cout << "\nP2 WINS!!!";
-            return 0;
         }
     }
 }
